@@ -1,4 +1,16 @@
 import 'package:flutter/material.dart';
+import 'model/PosterItem.dart';
+
+final posterItem = {
+  "list": [
+    {"image": "assets/poster01.jpg", "name": "포스터01"},
+    {"image": "assets/poster02.jpg", "name": "포스터02"},
+    {"image": "assets/poster03.jpg", "name": "포스터03"},
+    {"image": "assets/poster04.jpg", "name": "포스터04"}
+  ]
+};
+
+PosterList? posterList;
 
 void main() {
   runApp(const MyApp());
@@ -9,17 +21,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    posterList = PosterList.fromJson(posterItem);
+
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          fontFamily: 'Roboto',
-          primarySwatch: Colors.blue,
-        ),
-        home: Login(),
-        routes: {
-          '/login': (context) => Login(),
-          '/tos': (context) => Tos(),
-        },
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        fontFamily: 'Roboto',
+        primarySwatch: Colors.blue,
+      ),
+      home: Login(),
+      routes: {
+        '/login': (context) => Login(),
+        '/tos': (context) => Tos(),
+        '/home': (context) => Home(),
+      },
     );
   }
 }
@@ -137,8 +152,7 @@ class Login extends StatelessWidget {
                   height: 10,
                 ),
                 TextButton(
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                     child: Text(
                       '로그인에 문제가 있으신가요?',
                       style: TextStyle(
@@ -374,7 +388,9 @@ class _TosState extends State<Tos> {
           Container(
             padding: EdgeInsets.fromLTRB(55, 0, 50, 0),
             child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {
+                  final result = await Navigator.pushNamed(context, '/home');
+                },
                 style: ElevatedButton.styleFrom(
                     primary: const Color(0xff2C439B),
                     minimumSize: Size.fromHeight(45),
@@ -391,5 +407,144 @@ class _TosState extends State<Tos> {
         ],
       ),
     );
+  }
+}
+
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int idx = 0;
+  @override
+  Widget build(BuildContext context) {
+    posterList = PosterList.fromJson(posterItem);
+    int cnt = posterList!.list!.length;
+    return Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60),
+          child: AppBar(
+            title: Image.asset('assets/logo.png', width: 130),
+            centerTitle: true,
+            backgroundColor: Colors.white,
+            elevation: 0,
+            actions: [
+              IconButton(
+                onPressed: null,
+                icon: Image.asset('assets/icon_search.png'),
+                padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+              )
+            ],
+          ),
+        ),
+        body: Column(children: [
+          Container(
+            child: Stack(
+              children: [
+                Container(
+                    height: 520,
+                    child: PageView.builder(
+                      controller: PageController(initialPage: 0),
+                      itemCount: posterList!.list!.length,
+                      onPageChanged: (value) {
+                        setState(() {
+                          idx = value;
+                        });
+                      },
+                      itemBuilder: (BuildContext context, int index) {
+                        return Stack(children: [
+                          Container(
+                            height: 520,
+                            child: Image.asset(
+                              posterList!.list!.elementAt(index).image!,
+                              width: MediaQuery.of(context).size.width,
+                              fit: BoxFit.fitHeight,
+                            ),
+                          ),
+                          Positioned(
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height,
+                            top: 0,
+                            left: 0,
+                            child: Container(
+                                height: 520,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Colors.transparent,
+                                        Color(0xff41424A)
+                                      ]),
+                                ),
+                                child: SizedBox()),
+                          ),
+                          Positioned(
+                            bottom: 30,
+                            left: 25,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '황도유 : Innocentblossom',
+                                  style: TextStyle(
+                                    color: Color(0xffFFFFFF),
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 12,
+                                ),
+                                Text(
+                                  '서정아트 강남',
+                                  style: TextStyle(
+                                    color: Color(0xffFFFFFF),
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 8,
+                                ),
+                                Text(
+                                  '2023. 03. 27 ~ 2023. 04. 26',
+                                  style: TextStyle(
+                                    color: Color(0xffFFFFFF),
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ]);
+                      },
+                    )),
+                Positioned(
+                  bottom: 30,
+                  right: 25,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(0)),
+                      primary: Color.fromRGBO(255, 255, 255, 0.8),
+                    ),
+                    child: Text(
+                      '${idx+1}/$cnt',
+                      style: TextStyle(
+                        color: const Color(0xff41424A),
+                        fontSize: 12,
+                        letterSpacing: 2,
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ]));
   }
 }
