@@ -15,7 +15,12 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Roboto',
           primarySwatch: Colors.blue,
         ),
-        home: Tos());
+        home: Login(),
+        routes: {
+          '/login': (context) => Login(),
+          '/tos': (context) => Tos(),
+        },
+    );
   }
 }
 
@@ -45,7 +50,9 @@ class Login extends StatelessWidget {
             child: Column(
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    final result = await Navigator.pushNamed(context, '/tos');
+                  },
                   style: ElevatedButton.styleFrom(
                       primary: const Color(0xffFEE500),
                       minimumSize: Size.fromHeight(50),
@@ -61,7 +68,10 @@ class Login extends StatelessWidget {
                         child: Image.asset('assets/icon_Kakao.png'),
                       ),
                       Text('Kakao 아이디로 로그인',
-                          style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500)),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500)),
                     ],
                   ),
                 ),
@@ -69,7 +79,9 @@ class Login extends StatelessWidget {
                   height: 30,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    final result = await Navigator.pushNamed(context, '/tos');
+                  },
                   style: ElevatedButton.styleFrom(
                       primary: const Color(0xffFFFFFF),
                       minimumSize: Size.fromHeight(50),
@@ -85,7 +97,10 @@ class Login extends StatelessWidget {
                         child: Image.asset('assets/icon_Google.png'),
                       ),
                       Text('Google 아이디로 로그인',
-                          style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w500)),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500)),
                     ],
                   ),
                 ),
@@ -93,7 +108,9 @@ class Login extends StatelessWidget {
                   height: 30,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    final result = await Navigator.pushNamed(context, '/tos');
+                  },
                   style: ElevatedButton.styleFrom(
                       primary: const Color(0xff06C755),
                       minimumSize: Size.fromHeight(50),
@@ -109,7 +126,10 @@ class Login extends StatelessWidget {
                         child: Image.asset('assets/icon_Naver.png'),
                       ),
                       Text('NAVER 아이디로 로그인',
-                          style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500)),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500)),
                     ],
                   ),
                 ),
@@ -117,7 +137,8 @@ class Login extends StatelessWidget {
                   height: 10,
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                    },
                     child: Text(
                       '로그인에 문제가 있으신가요?',
                       style: TextStyle(
@@ -157,20 +178,40 @@ class _TosState extends State<Tos> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('환영합니다!', style: TextStyle(color:const Color(0xff41424A), fontSize: 37, fontWeight: FontWeight.w700),),
+                Text(
+                  '환영합니다!',
+                  style: TextStyle(
+                      color: const Color(0xff41424A),
+                      fontSize: 37,
+                      fontWeight: FontWeight.w700),
+                ),
                 Text.rich(TextSpan(children: [
                   TextSpan(
                       text: 'LISCENT ',
-                      style: TextStyle(color: const Color(0xff2C439B), fontSize: 37, fontWeight: FontWeight.w700)),
-                  TextSpan(text: '사용을 위한',
-                      style: TextStyle(color: const Color(0xff41424A), fontSize: 37, fontWeight: FontWeight.w700)),
+                      style: TextStyle(
+                          color: const Color(0xff2C439B),
+                          fontSize: 37,
+                          fontWeight: FontWeight.w700)),
+                  TextSpan(
+                      text: '사용을 위한',
+                      style: TextStyle(
+                          color: const Color(0xff41424A),
+                          fontSize: 37,
+                          fontWeight: FontWeight.w700)),
                 ])),
                 Text.rich(TextSpan(children: [
                   TextSpan(
                       text: '동의',
-                      style: TextStyle(color: const Color(0xff2C439B), fontSize: 37, fontWeight: FontWeight.w700)),
-                  TextSpan(text: '가 필요합니다.',
-                      style: TextStyle(color: const Color(0xff41424A), fontSize: 37, fontWeight: FontWeight.w700)),
+                      style: TextStyle(
+                          color: const Color(0xff2C439B),
+                          fontSize: 37,
+                          fontWeight: FontWeight.w700)),
+                  TextSpan(
+                      text: '가 필요합니다.',
+                      style: TextStyle(
+                          color: const Color(0xff41424A),
+                          fontSize: 37,
+                          fontWeight: FontWeight.w700)),
                 ])),
               ],
             ),
@@ -182,58 +223,62 @@ class _TosState extends State<Tos> {
             padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
             child: Column(
               children: [
-                 CheckboxListTile(
-                  title: Text('모든 약관에 동의합니다.', style: TextStyle(color: const Color(0xff41424A), fontSize: 15, fontWeight: FontWeight.w700)),
-                  value: _ischecked1,
-                  onChanged: (value){
-                    setState(() {
-                      _ischecked1 = value!;
-                      if(_ischecked1) {
-                        _ischecked2 = value;
-                        _ischecked3 = value;
-                        _ischecked4 = value;
-                      }else{
-                        _ischecked2 = value;
-                        _ischecked3 = value;
-                        _ischecked4 = value;
+                CheckboxListTile(
+                    title: Text('모든 약관에 동의합니다.',
+                        style: TextStyle(
+                            color: const Color(0xff41424A),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700)),
+                    value: _ischecked1,
+                    onChanged: (value) {
+                      setState(() {
+                        _ischecked1 = value!;
+                        if (_ischecked1) {
+                          _ischecked2 = value;
+                          _ischecked3 = value;
+                          _ischecked4 = value;
+                        } else {
+                          _ischecked2 = value;
+                          _ischecked3 = value;
+                          _ischecked4 = value;
+                        }
+                      });
+                    },
+                    activeColor: Colors.white,
+                    checkColor: const Color(0xff2C439B),
+                    side: MaterialStateBorderSide.resolveWith((states) {
+                      if (states.contains(MaterialState.selected)) {
+                        return const BorderSide(
+                            width: 1, color: const Color(0xff41424A));
                       }
-                    });
-                  },
-                   activeColor: Colors.white,
-                   checkColor: const Color(0xff2C439B),
-                   side: MaterialStateBorderSide.resolveWith((states) {
-                     if(states.contains(MaterialState.selected)) {
-                       return const BorderSide(width: 1, color: const Color(0xff41424A));
-                     }
-                     return const BorderSide(width: 1, color: const Color(0xff41424A));
-                   })
-                ),
+                      return const BorderSide(
+                          width: 1, color: const Color(0xff41424A));
+                    })),
                 SizedBox(
                   height: 30,
                 ),
                 CheckboxListTile(
-                    title: Text.rich(
+                    title: Text.rich(TextSpan(children: [
                       TextSpan(
-                        children: [
-                          TextSpan(text: '서비스 이용을 위한 필수 약관동의',
-                              style: TextStyle(color: const Color(0xff41424A), fontWeight: FontWeight.w700)
-                          ),
-                          TextSpan(text: '(필수)',
-                              style: TextStyle(color: const Color(0xff2C439B), fontWeight: FontWeight.w700)
-                          ),
-                        ]
-                      )
-                    ),
+                          text: '서비스 이용을 위한 필수 약관동의',
+                          style: TextStyle(
+                              color: const Color(0xff41424A),
+                              fontWeight: FontWeight.w700)),
+                      TextSpan(
+                          text: '(필수)',
+                          style: TextStyle(
+                              color: const Color(0xff2C439B),
+                              fontWeight: FontWeight.w700)),
+                    ])),
                     value: _ischecked2,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         _ischecked2 = value!;
-                        if(_ischecked2) {
-
+                        if (_ischecked2) {
                         } else {
                           _ischecked1 = value;
                         }
-                        if( _ischecked2 && _ischecked3 && _ischecked4) {
+                        if (_ischecked2 && _ischecked3 && _ischecked4) {
                           _ischecked1 = true;
                         }
                       });
@@ -241,28 +286,37 @@ class _TosState extends State<Tos> {
                     activeColor: Colors.white,
                     checkColor: const Color(0xff2C439B),
                     side: MaterialStateBorderSide.resolveWith((states) {
-                      if(states.contains(MaterialState.selected)) {
-                        return const BorderSide(width: 1, color: const Color(0xff41424A));
+                      if (states.contains(MaterialState.selected)) {
+                        return const BorderSide(
+                            width: 1, color: const Color(0xff41424A));
                       }
-                      return const BorderSide(width: 1, color: const Color(0xff41424A));
-                    })
-                ),
+                      return const BorderSide(
+                          width: 1, color: const Color(0xff41424A));
+                    })),
                 SizedBox(
                   height: 30,
                 ),
                 CheckboxListTile(
-                    title: Text('위치 기반 정보 활용 동의', style: TextStyle(color: const Color(0xff41424A), fontSize: 15, fontWeight: FontWeight.w700),),
-                    subtitle: Text('(주변 전시회를 안내드리기 위해 필요해요.)', style: TextStyle(color: const Color(0xff41424A),fontWeight: FontWeight.w500)),
+                    title: Text(
+                      '위치 기반 정보 활용 동의',
+                      style: TextStyle(
+                          color: const Color(0xff41424A),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    subtitle: Text('(주변 전시회를 안내드리기 위해 필요해요.)',
+                        style: TextStyle(
+                            color: const Color(0xff41424A),
+                            fontWeight: FontWeight.w500)),
                     value: _ischecked3,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         _ischecked3 = value!;
-                        if(_ischecked3) {
-
+                        if (_ischecked3) {
                         } else {
                           _ischecked1 = value;
                         }
-                        if( _ischecked2 && _ischecked3 && _ischecked4) {
+                        if (_ischecked2 && _ischecked3 && _ischecked4) {
                           _ischecked1 = true;
                         }
                       });
@@ -270,27 +324,33 @@ class _TosState extends State<Tos> {
                     activeColor: Colors.white,
                     checkColor: const Color(0xff2C439B),
                     side: MaterialStateBorderSide.resolveWith((states) {
-                      if(states.contains(MaterialState.selected)) {
-                        return const BorderSide(width: 1, color: const Color(0xff41424A));
+                      if (states.contains(MaterialState.selected)) {
+                        return const BorderSide(
+                            width: 1, color: const Color(0xff41424A));
                       }
-                      return const BorderSide(width: 1, color: const Color(0xff41424A));
-                    })
-                ),
+                      return const BorderSide(
+                          width: 1, color: const Color(0xff41424A));
+                    })),
                 SizedBox(
                   height: 30,
                 ),
                 CheckboxListTile(
-                    title: Text('마케팅 활용 및 광고성 정보 수신 동의', style: TextStyle(color: const Color(0xff41424A), fontSize: 15, fontWeight: FontWeight.w700),),
+                    title: Text(
+                      '마케팅 활용 및 광고성 정보 수신 동의',
+                      style: TextStyle(
+                          color: const Color(0xff41424A),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700),
+                    ),
                     value: _ischecked4,
-                    onChanged: (value){
+                    onChanged: (value) {
                       setState(() {
                         _ischecked4 = value!;
-                        if(_ischecked4) {
-
+                        if (_ischecked4) {
                         } else {
                           _ischecked1 = value;
                         }
-                        if( _ischecked2 && _ischecked3 && _ischecked4) {
+                        if (_ischecked2 && _ischecked3 && _ischecked4) {
                           _ischecked1 = true;
                         }
                       });
@@ -298,12 +358,13 @@ class _TosState extends State<Tos> {
                     activeColor: Colors.white,
                     checkColor: const Color(0xff2C439B),
                     side: MaterialStateBorderSide.resolveWith((states) {
-                      if(states.contains(MaterialState.selected)) {
-                        return const BorderSide(width: 1, color: const Color(0xff41424A));
+                      if (states.contains(MaterialState.selected)) {
+                        return const BorderSide(
+                            width: 1, color: const Color(0xff41424A));
                       }
-                      return const BorderSide(width: 1, color: const Color(0xff41424A));
-                    })
-                ),
+                      return const BorderSide(
+                          width: 1, color: const Color(0xff41424A));
+                    })),
               ],
             ),
           ),
@@ -313,7 +374,7 @@ class _TosState extends State<Tos> {
           Container(
             padding: EdgeInsets.fromLTRB(55, 0, 50, 0),
             child: ElevatedButton(
-              onPressed: () {},
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                     primary: const Color(0xff2C439B),
                     minimumSize: Size.fromHeight(45),
@@ -321,7 +382,8 @@ class _TosState extends State<Tos> {
                     shadowColor: Colors.transparent,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(0))),
-              child: Text('다음', style: TextStyle(color: Colors.white, fontSize: 16))),
+                child: Text('다음',
+                    style: TextStyle(color: Colors.white, fontSize: 16))),
           ),
           const Flexible(
             child: FractionallySizedBox(heightFactor: 0.1),
