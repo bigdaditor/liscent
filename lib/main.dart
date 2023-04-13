@@ -521,7 +521,8 @@ class _HomeState extends State<Home> {
                           )
                         ]);
                       },
-                    )),
+                    )
+                ),
                 Positioned(
                   bottom: 30,
                   right: 25,
@@ -545,6 +546,46 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-        ]));
+          Expanded(
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.fromLTRB(20, 10, 20, 5),
+                  child: Row(
+                    children: [
+                      Text('추천 도슨트'),
+                      TextButton(onPressed: () {}, child: Text('더보기'))
+                    ],
+                  ),
+                ),
+                Expanded(
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(20, 5, 20, 10),
+                      child: GridView.builder(
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 5,
+                            crossAxisSpacing: 20,
+                            childAspectRatio: 3/2,
+                          ),
+                          itemCount: 4,
+                          itemBuilder: (BuildContext context, int index){
+                            return GridTile(
+                              footer: GridTileBar(
+                                backgroundColor: Colors.blue,
+                                title: Text('테스트 제목'),
+                                subtitle: Text('테스트 서브 타이틀'),
+                              ),
+                              child: Text('임시'),
+                            );
+                          }),
+                    ),
+                ),
+              ],
+            )
+          ),
+
+        ])
+    );
   }
 }
