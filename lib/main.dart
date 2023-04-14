@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
         primarySwatch: Colors.blue,
       ),
-      home: Login(),
+      home: Home(),
       routes: {
         '/login': (context) => Login(),
         '/tos': (context) => Tos(),
@@ -419,6 +419,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int idx = 0;
+
   @override
   Widget build(BuildContext context) {
     posterList = PosterList.fromJson(posterItem);
@@ -440,152 +441,200 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
-        body: Column(children: [
-          Container(
-            child: Stack(
-              children: [
-                Container(
-                    height: 520,
-                    child: PageView.builder(
-                      controller: PageController(initialPage: 0),
-                      itemCount: posterList!.list!.length,
-                      onPageChanged: (value) {
-                        setState(() {
-                          idx = value;
-                        });
-                      },
-                      itemBuilder: (BuildContext context, int index) {
-                        return Stack(children: [
+        body: LayoutBuilder(
+          builder: (BuildContext, BoxConstraints) => Column(
+            children: [
+              Expanded(
+                  child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      child: Stack(
+                        children: [
                           Container(
-                            height: 520,
-                            child: Image.asset(
-                              posterList!.list!.elementAt(index).image!,
-                              width: MediaQuery.of(context).size.width,
-                              fit: BoxFit.fitHeight,
-                            ),
-                          ),
-                          Positioned(
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height,
-                            top: 0,
-                            left: 0,
-                            child: Container(
-                                height: 520,
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        Colors.transparent,
-                                        Color(0xff41424A)
-                                      ]),
-                                ),
-                                child: SizedBox()),
-                          ),
+                              height: 520,
+                              child: PageView.builder(
+                                controller: PageController(initialPage: 0),
+                                itemCount: posterList!.list!.length,
+                                onPageChanged: (value) {
+                                  setState(() {
+                                    idx = value;
+                                  });
+                                },
+                                itemBuilder: (context, int index) {
+                                  return Stack(children: [
+                                    Container(
+                                      height: 520,
+                                      child: Image.asset(
+                                        posterList!.list!
+                                            .elementAt(index)
+                                            .image!,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        fit: BoxFit.fitHeight,
+                                      ),
+                                    ),
+                                    Positioned(
+                                      width: MediaQuery.of(context).size.width,
+                                      height:
+                                          MediaQuery.of(context).size.height,
+                                      top: 0,
+                                      left: 0,
+                                      child: Container(
+                                          height: 520,
+                                          decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Colors.transparent,
+                                                  Color(0xff41424A)
+                                                ]),
+                                          ),
+                                          child: SizedBox()),
+                                    ),
+                                    Positioned(
+                                      bottom: 30,
+                                      left: 25,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '황도유 : Innocentblossom',
+                                            style: TextStyle(
+                                              color: Color(0xffFFFFFF),
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 18,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 12,
+                                          ),
+                                          Text(
+                                            '서정아트 강남',
+                                            style: TextStyle(
+                                              color: Color(0xffFFFFFF),
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 8,
+                                          ),
+                                          Text(
+                                            '2023. 03. 27 ~ 2023. 04. 26',
+                                            style: TextStyle(
+                                              color: Color(0xffFFFFFF),
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ]);
+                                },
+                              )),
                           Positioned(
                             bottom: 30,
-                            left: 25,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '황도유 : Innocentblossom',
-                                  style: TextStyle(
-                                    color: Color(0xffFFFFFF),
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 18,
-                                  ),
+                            right: 25,
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(0)),
+                                primary: Color.fromRGBO(255, 255, 255, 0.8),
+                              ),
+                              child: Text(
+                                '${idx + 1}/$cnt',
+                                style: TextStyle(
+                                  color: const Color(0xff41424A),
+                                  fontSize: 12,
+                                  letterSpacing: 2,
                                 ),
-                                SizedBox(
-                                  height: 12,
-                                ),
-                                Text(
-                                  '서정아트 강남',
-                                  style: TextStyle(
-                                    color: Color(0xffFFFFFF),
-                                    fontSize: 15,
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                Text(
-                                  '2023. 03. 27 ~ 2023. 04. 26',
-                                  style: TextStyle(
-                                    color: Color(0xffFFFFFF),
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                           )
-                        ]);
-                      },
-                    )
-                ),
-                Positioned(
-                  bottom: 30,
-                  right: 25,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(0)),
-                      primary: Color.fromRGBO(255, 255, 255, 0.8),
-                    ),
-                    child: Text(
-                      '${idx+1}/$cnt',
-                      style: TextStyle(
-                        color: const Color(0xff41424A),
-                        fontSize: 12,
-                        letterSpacing: 2,
+                        ],
                       ),
                     ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.fromLTRB(20, 10, 20, 5),
-                  child: Row(
-                    children: [
-                      Text('추천 도슨트'),
-                      TextButton(onPressed: () {}, child: Text('더보기'))
-                    ],
-                  ),
-                ),
-                Expanded(
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(20, 5, 20, 10),
-                      child: GridView.builder(
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 5,
-                            crossAxisSpacing: 20,
-                            childAspectRatio: 3/2,
-                          ),
-                          itemCount: 4,
-                          itemBuilder: (BuildContext context, int index){
-                            return GridTile(
-                              footer: GridTileBar(
-                                backgroundColor: Colors.blue,
-                                title: Text('테스트 제목'),
-                                subtitle: Text('테스트 서브 타이틀'),
-                              ),
-                              child: Text('임시'),
-                            );
-                          }),
+                    Container(
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(20, 10, 20, 5),
+                        child: Row(
+                          children: [
+                            Text('추천 도슨트'),
+                            TextButton(onPressed: () {}, child: Text('더보기'))
+                          ],
+                        ),
+                      ),
                     ),
+                    GridView.builder(
+                      shrinkWrap: true,
+                      physics: ScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 5,
+                        crossAxisSpacing: 10,
+                        childAspectRatio: 0.75,
+                      ),
+                      // padding: EdgeInsets.all(20),
+                      itemCount: 10,
+                      itemBuilder: (context, int index) => ItemCard(),
+                    )
+                  ],
                 ),
-              ],
-            )
+              ))
+            ],
           ),
+        ));
+  }
+}
 
-        ])
+class ItemCard extends StatelessWidget {
+  const ItemCard({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Stack(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.all(10),
+                height: 153,
+                width: 153,
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                ),
+              ),
+              Positioned(
+                  left: 0,
+                  top: 100,
+                  child: Container(
+                    height: 43,
+                    width: 153,
+                    color: Colors.amber,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '테스트 제목',
+                          style: TextStyle(fontWeight: FontWeight.w700),
+                        ),
+                        Text(
+                          '테스트 소제목',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        )
+                      ],
+                    ),
+                  ))
+            ],
+          )
+        ],
+      ),
     );
   }
 }
