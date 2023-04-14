@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -56,7 +58,17 @@ class Login extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    final result = await Navigator.pushNamed(context, '/tos');
+                    GoogleSignIn googleSignIn = GoogleSignIn();
+                    GoogleSignInAccount? user = await googleSignIn.signIn();
+                    if(user != null) {
+                      showLoginResultMessage(user.displayName!);
+                      Navigator.pushNamed(
+                        context,
+                        '/tos'
+                      );
+                    } else {
+                      showLoginResultMessage('');
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                       primary: const Color(0xffFFFFFF),
@@ -127,4 +139,16 @@ class Login extends StatelessWidget {
       )),
     );
   }
+}
+
+void showLoginResultMessage(String userName) {
+  String resultMsg;
+  if(userName != '') {
+    resultMsg = '$userName 님 환영합니다.';
+  } else {
+    resultMsg = '로그인에 실패했습니다.';
+  }
+  Fluttertoast.showToast(
+      msg: resultMsg
+  );
 }
