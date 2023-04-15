@@ -12,8 +12,12 @@ dependencies:
   build_runner: ^2.3.3
   json_annotation: ^4.8.0
   json_serializable: ^6.6.1
-  google_sign_in: ^5.4.1
   fluttertoast: ^8.0.8
+
+  # 로그인
+  google_sign_in: ^5.4.1
+  kakao_flutter_sdk: ^1.4.1
+  kakao_flutter_sdk_user: ^1.4.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

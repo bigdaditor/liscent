@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:liscent/widget/login_widget.dart';
 
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class Login extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () async {
-                    final result = await Navigator.pushNamed(context, '/tos');
+                    new LoginWidget('kakao');
                   },
                   style: ElevatedButton.styleFrom(
                       primary: const Color(0xffFEE500),
@@ -61,13 +62,11 @@ class Login extends StatelessWidget {
                     GoogleSignIn googleSignIn = GoogleSignIn();
                     GoogleSignInAccount? user = await googleSignIn.signIn();
                     if(user != null) {
-                      showLoginResultMessage(user.displayName!);
                       Navigator.pushNamed(
                         context,
                         '/tos'
                       );
                     } else {
-                      showLoginResultMessage('');
                     }
                   },
                   style: ElevatedButton.styleFrom(
@@ -139,16 +138,4 @@ class Login extends StatelessWidget {
       )),
     );
   }
-}
-
-void showLoginResultMessage(String userName) {
-  String resultMsg;
-  if(userName != '') {
-    resultMsg = '$userName 님 환영합니다.';
-  } else {
-    resultMsg = '로그인에 실패했습니다.';
-  }
-  Fluttertoast.showToast(
-      msg: resultMsg
-  );
 }
