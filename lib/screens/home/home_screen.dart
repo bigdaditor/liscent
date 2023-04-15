@@ -48,144 +48,144 @@ class _HomeState extends State<Home> {
             children: [
               Expanded(
                   child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Container(
-                      child: Stack(
-                        children: [
-                          Container(
-                              height: 520,
-                              child: PageView.builder(
-                                controller: PageController(initialPage: 0),
-                                itemCount: posterList!.list!.length,
-                                onPageChanged: (value) {
-                                  setState(() {
-                                    idx = value;
-                                  });
-                                },
-                                itemBuilder: (context, int index) {
-                                  return Stack(children: [
-                                    Container(
-                                      height: 520,
-                                      child: Image.asset(
-                                        posterList!.list!
-                                            .elementAt(index)
-                                            .image!,
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        fit: BoxFit.fitHeight,
-                                      ),
-                                    ),
-                                    Positioned(
-                                      width: MediaQuery.of(context).size.width,
-                                      height:
-                                          MediaQuery.of(context).size.height,
-                                      top: 0,
-                                      left: 0,
-                                      child: Container(
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Stack(
+                            children: [
+                              Container(
+                                  height: 520,
+                                  child: PageView.builder(
+                                    controller: PageController(initialPage: 0),
+                                    itemCount: posterList!.list!.length,
+                                    onPageChanged: (value) {
+                                      setState(() {
+                                        idx = value;
+                                      });
+                                    },
+                                    itemBuilder: (context, int index) {
+                                      return Stack(children: [
+                                        Container(
                                           height: 520,
-                                          decoration: BoxDecoration(
-                                            gradient: LinearGradient(
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter,
-                                                colors: [
-                                                  Colors.transparent,
-                                                  Color(0xff41424A)
-                                                ]),
+                                          child: Image.asset(
+                                            posterList!.list!
+                                                .elementAt(index)
+                                                .image!,
+                                            width:
+                                            MediaQuery.of(context).size.width,
+                                            fit: BoxFit.fitHeight,
                                           ),
-                                          child: SizedBox()),
-                                    ),
-                                    Positioned(
-                                      bottom: 30,
-                                      left: 25,
-                                      child: Column(
-                                        crossAxisAlignment:
+                                        ),
+                                        Positioned(
+                                          width: MediaQuery.of(context).size.width,
+                                          height:
+                                          MediaQuery.of(context).size.height,
+                                          top: 0,
+                                          left: 0,
+                                          child: Container(
+                                              height: 520,
+                                              decoration: BoxDecoration(
+                                                gradient: LinearGradient(
+                                                    begin: Alignment.topCenter,
+                                                    end: Alignment.bottomCenter,
+                                                    colors: [
+                                                      Colors.transparent,
+                                                      Color(0xff41424A)
+                                                    ]),
+                                              ),
+                                              child: SizedBox()),
+                                        ),
+                                        Positioned(
+                                          bottom: 30,
+                                          left: 25,
+                                          child: Column(
+                                            crossAxisAlignment:
                                             CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            '황도유 : Innocentblossom',
-                                            style: TextStyle(
-                                              color: Color(0xffFFFFFF),
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 18,
-                                            ),
+                                            children: [
+                                              Text(
+                                                '황도유 : Innocentblossom',
+                                                style: TextStyle(
+                                                  color: Color(0xffFFFFFF),
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 12,
+                                              ),
+                                              Text(
+                                                '서정아트 강남',
+                                                style: TextStyle(
+                                                  color: Color(0xffFFFFFF),
+                                                  fontSize: 15,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 8,
+                                              ),
+                                              Text(
+                                                '2023. 03. 27 ~ 2023. 04. 26',
+                                                style: TextStyle(
+                                                  color: Color(0xffFFFFFF),
+                                                  fontSize: 15,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          SizedBox(
-                                            height: 12,
-                                          ),
-                                          Text(
-                                            '서정아트 강남',
-                                            style: TextStyle(
-                                              color: Color(0xffFFFFFF),
-                                              fontSize: 15,
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 8,
-                                          ),
-                                          Text(
-                                            '2023. 03. 27 ~ 2023. 04. 26',
-                                            style: TextStyle(
-                                              color: Color(0xffFFFFFF),
-                                              fontSize: 15,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ]);
-                                },
-                              )),
-                          Positioned(
-                            bottom: 30,
-                            right: 25,
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(0)),
-                                primary: Color.fromRGBO(255, 255, 255, 0.8),
-                              ),
-                              child: Text(
-                                '${idx + 1}/$cnt',
-                                style: TextStyle(
-                                  color: const Color(0xff41424A),
-                                  fontSize: 12,
-                                  letterSpacing: 2,
+                                        )
+                                      ]);
+                                    },
+                                  )),
+                              Positioned(
+                                bottom: 30,
+                                right: 25,
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(0)),
+                                    primary: Color.fromRGBO(255, 255, 255, 0.8),
+                                  ),
+                                  child: Text(
+                                    '${idx + 1}/$cnt',
+                                    style: TextStyle(
+                                      color: const Color(0xff41424A),
+                                      fontSize: 12,
+                                      letterSpacing: 2,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      child: Container(
-                        padding: EdgeInsets.fromLTRB(20, 10, 20, 5),
-                        child: Row(
-                          children: [
-                            Text('추천 도슨트'),
-                            TextButton(onPressed: () {}, child: Text('더보기'))
-                          ],
+                              )
+                            ],
+                          ),
                         ),
-                      ),
+                        Container(
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(20, 10, 20, 5),
+                            child: Row(
+                              children: [
+                                Text('추천 도슨트'),
+                                TextButton(onPressed: () {}, child: Text('더보기'))
+                              ],
+                            ),
+                          ),
+                        ),
+                        GridView.builder(
+                          shrinkWrap: true,
+                          physics: ScrollPhysics(),
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 5,
+                            crossAxisSpacing: 10,
+                            childAspectRatio: 0.75,
+                          ),
+                          // padding: EdgeInsets.all(20),
+                          itemCount: 10,
+                          itemBuilder: (context, int index) => ItemCard(),
+                        )
+                      ],
                     ),
-                    GridView.builder(
-                      shrinkWrap: true,
-                      physics: ScrollPhysics(),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 5,
-                        crossAxisSpacing: 10,
-                        childAspectRatio: 0.75,
-                      ),
-                      // padding: EdgeInsets.all(20),
-                      itemCount: 10,
-                      itemBuilder: (context, int index) => ItemCard(),
-                    )
-                  ],
-                ),
-              )
+                  )
               )
             ],
           ),

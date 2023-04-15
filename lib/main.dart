@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
         primarySwatch: Colors.blue,
       ),
-      home: const Login(),
+      home: const Home(),
       routes: {
         '/login': (context) => const Login(),
         '/tos': (context) => const Tos(),
