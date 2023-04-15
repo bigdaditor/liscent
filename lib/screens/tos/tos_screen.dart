@@ -17,18 +17,19 @@ class _TosState extends State<Tos> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
+            padding: EdgeInsets.fromLTRB(35, 30, 35, 0),
+            width: MediaQuery.of(context).size.width,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   '환영합니다!',
                   style: TextStyle(
                       color: const Color(0xff41424A),
-                      fontSize: 37,
+                      fontSize: 35,
                       fontWeight: FontWeight.w700),
                 ),
                 Text.rich(TextSpan(children: [
@@ -36,13 +37,13 @@ class _TosState extends State<Tos> {
                       text: 'LISCENT ',
                       style: TextStyle(
                           color: const Color(0xff2C439B),
-                          fontSize: 37,
+                          fontSize: 35,
                           fontWeight: FontWeight.w700)),
                   TextSpan(
                       text: '사용을 위한',
                       style: TextStyle(
                           color: const Color(0xff41424A),
-                          fontSize: 37,
+                          fontSize: 35,
                           fontWeight: FontWeight.w700)),
                 ])),
                 Text.rich(TextSpan(children: [
@@ -50,23 +51,23 @@ class _TosState extends State<Tos> {
                       text: '동의',
                       style: TextStyle(
                           color: const Color(0xff2C439B),
-                          fontSize: 37,
+                          fontSize: 35,
                           fontWeight: FontWeight.w700)),
                   TextSpan(
                       text: '가 필요합니다.',
                       style: TextStyle(
                           color: const Color(0xff41424A),
-                          fontSize: 37,
+                          fontSize: 35,
                           fontWeight: FontWeight.w700)),
                 ])),
               ],
             ),
           ),
           const Flexible(
-            child: FractionallySizedBox(heightFactor: 0.1),
+            child: FractionallySizedBox(heightFactor: 0.5),
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
+            padding: EdgeInsets.fromLTRB(20, 0, 13, 0),
             child: Column(
               children: [
                 CheckboxListTile(
@@ -218,23 +219,23 @@ class _TosState extends State<Tos> {
             height: 40,
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(55, 0, 50, 0),
+            padding: EdgeInsets.fromLTRB(35, 0, 35, 0),
             child: ElevatedButton(
                 onPressed: () async {
-                  final result = await Navigator.pushNamed(context, '/home');
+                  final result = await Navigator.pushNamed(context, '/guide');
                 },
                 style: ElevatedButton.styleFrom(
                     primary: const Color(0xff2C439B),
-                    minimumSize: Size.fromHeight(45),
+                    minimumSize: Size.fromHeight(50),
                     elevation: 0.0,
                     shadowColor: Colors.transparent,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(0))),
                 child: Text('다음',
-                    style: TextStyle(color: Colors.white, fontSize: 16))),
+                    style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700))),
           ),
           const Flexible(
-            child: FractionallySizedBox(heightFactor: 0.1),
+            child: FractionallySizedBox(heightFactor: 0.4),
           ),
         ],
       ),
