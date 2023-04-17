@@ -4,6 +4,8 @@ import 'package:liscent/screens/info/info_screen.dart';
 import 'screens/login/login_screen.dart';
 import 'screens/tos/tos_screen.dart';
 import 'screens/home/home_screen.dart';
+import 'screens/worklist/worklist_screen.dart';
+import 'screens/likedisplay/likedisplay_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,13 +23,15 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
         primarySwatch: Colors.blue,
       ),
-      home: const Tos(),
+      home: const Likedisplay(),
       routes: {
         '/login': (context) => const Login(),
         '/tos': (context) => const Tos(),
         '/home': (context) => const Home(),
         '/info': (context) => const Info(),
         '/guide': (context) => const Guide(),
+        '/worklist': (context) => const Wokrlist(),
+        '/likedisplay': (context) => const Likedisplay(),
       },
     );
   }
