@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:liscent/screens/guide/guide_screen.dart';
 import 'package:liscent/screens/info/info_screen.dart';
+import 'package:liscent/screens/nearby/nearby_screen.dart';
 import 'screens/login/login_screen.dart';
 import 'screens/tos/tos_screen.dart';
 import 'screens/home/home_screen.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         '/guide': (context) => const Guide(),
         '/worklist': (context) => const Wokrlist(),
         '/likedisplay': (context) => const Likedisplay(),
+        '/nearby': (context) => const NearbyScreen()
       },
     );
   }

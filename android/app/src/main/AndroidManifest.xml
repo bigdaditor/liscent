@@ -52,5 +52,7 @@
        <meta-data
            android:name="com.naver.sdk.clientName"
            android:value="@string/client_name" />
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyCJQqtFgZzMGATP9k4uVmPYMObV0E5WoJ0"/>
     </application>
 </manifest>
