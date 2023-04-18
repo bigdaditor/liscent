@@ -40,11 +40,11 @@ class _LikedisplayState extends State<Likedisplay> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Title(
-                        color: Color(0xff41424A),
-                        child: Text('좋아하는 전시',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w700))),
+                    Text('좋아하는 전시',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xff41424A))),
                     Container(
                       width: 100,
                       child: DropdownButtonFormField<String>(
@@ -53,14 +53,14 @@ class _LikedisplayState extends State<Likedisplay> {
                             TextStyle(fontSize: 13, color: Color(0xff41424A)),
                         decoration: InputDecoration(
                             enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(width: 1,color: Color(0xff41424A)),
-                            borderRadius: BorderRadius.circular(0)
-                            ),
-                        focusedBorder: OutlineInputBorder(borderSide: BorderSide(width: 1,color: Color(0xff41424A)),
-                            borderRadius: BorderRadius.circular(0))
-                        ),
+                                borderSide: BorderSide(
+                                    width: 1, color: Color(0xff41424A)),
+                                borderRadius: BorderRadius.circular(0)),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    width: 1, color: Color(0xff41424A)),
+                                borderRadius: BorderRadius.circular(0))),
                         isExpanded: true,
-
                         icon: Icon(Icons.keyboard_arrow_down_outlined),
                         iconSize: 18,
                         iconDisabledColor: Color(0xff41424A),
@@ -229,15 +229,14 @@ class _LikedisplayState extends State<Likedisplay> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Title(
-                        color: Color(0xff41424A),
-                        child: Text(
-                          '작품명',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 1),
-                        )),
+                    Text(
+                      '작품명',
+                      style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 1,
+                          color: Color(0xff41424A)),
+                    ),
                     Text(
                       '작가명',
                       style: TextStyle(

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Wokrlist extends StatefulWidget {
-  const Wokrlist({Key? key}) : super(key: key);
+class Worklist extends StatefulWidget {
+  const Worklist({Key? key}) : super(key: key);
 
   @override
-  State<Wokrlist> createState() => _WokrlistState();
+  State<Worklist> createState() => _WorklistState();
 }
 
-class _WokrlistState extends State<Wokrlist> {
+class _WorklistState extends State<Worklist> {
   int _selectedIndex = 0;
   bool click = true;
 
@@ -35,11 +35,9 @@ class _WokrlistState extends State<Wokrlist> {
           children: [
             Padding(
               padding: EdgeInsets.fromLTRB(25, 25, 0, 20),
-              child: Title(
-                  color: Color(0xff41424A),
                   child: Text('전시 작품 리스트',
                       style: TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.w700))),
+                          fontSize: 18, fontWeight: FontWeight.w700,color: Color(0xff41424A))),
             ),
             Expanded(
                 child: ListView.builder(
@@ -182,15 +180,13 @@ class _WokrlistState extends State<Wokrlist> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Title(
-                        color: Color(0xff41424A),
-                        child: Text(
+                     Text(
                           '작품명',
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
-                              letterSpacing: 1),
-                        )),
+                              letterSpacing: 1,color: Color(0xff41424A)),
+                        ),
                     Text(
                       '작가명',
                       style: TextStyle(

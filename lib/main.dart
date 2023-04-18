@@ -7,6 +7,7 @@ import 'screens/tos/tos_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/worklist/worklist_screen.dart';
 import 'screens/likedisplay/likedisplay_screen.dart';
+import 'screens/rank/rank_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,14 +25,14 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      home: Rank(),
       routes: {
         '/login': (context) => LoginScreen(),
         '/tos': (context) => const Tos(),
         '/home': (context) => const Home(),
         '/info': (context) => const Info(),
         '/guide': (context) => const Guide(),
-        '/worklist': (context) => const Wokrlist(),
+        '/worklist': (context) => const Worklist(),
         '/likedisplay': (context) => const Likedisplay(),
         '/nearby': (context) => const NearbyScreen()
       },
