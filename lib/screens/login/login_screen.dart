@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:liscent/widget/login_widget.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class LoginScreen extends StatefulWidget {
+  LoginScreenState createState() => LoginScreenState();
+}
+
+class LoginScreenState extends State<LoginScreen> {
+  LoginService loginService = LoginService();
+  String? userName;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,11 @@ class Login extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () async {
-                    new LoginWidget('kakao');
+                    userName = await loginService.kakaoLogin();
+                    showLoginToast(userName);
+                    if (userName != '') {
+                      Navigator.pushNamed(context, '/tos');
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                       primary: const Color(0xffFEE500),
@@ -59,14 +67,10 @@ class Login extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    GoogleSignIn googleSignIn = GoogleSignIn();
-                    GoogleSignInAccount? user = await googleSignIn.signIn();
-                    if(user != null) {
-                      Navigator.pushNamed(
-                        context,
-                        '/tos'
-                      );
-                    } else {
+                    userName = await loginService.googleLogin();
+                    showLoginToast(userName);
+                    if (userName != '') {
+                      Navigator.pushNamed(context, '/tos');
                     }
                   },
                   style: ElevatedButton.styleFrom(
@@ -96,7 +100,11 @@ class Login extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    final result = await Navigator.pushNamed(context, '/tos');
+                    userName = await loginService.naverLogin();
+                    showLoginToast(userName);
+                    if (userName != '') {
+                      Navigator.pushNamed(context, '/tos');
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                       primary: const Color(0xff06C755),
@@ -138,4 +146,15 @@ class Login extends StatelessWidget {
       )),
     );
   }
+}
+
+void showLoginToast(var userName) {
+  var resultMsg = '';
+  if (userName != '') {
+    resultMsg = '${userName} 님 환영합니다.';
+  } else {
+    resultMsg = '로그인에 실패했습니다.';
+  }
+
+  Fluttertoast.showToast(msg: resultMsg, toastLength: Toast.LENGTH_SHORT);
 }

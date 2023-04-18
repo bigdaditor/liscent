@@ -1,4 +1,4 @@
-enum loginPlatform {
+enum LoginSite {
   kakao("kakao", "yellow"),
   naver("naver", "green"),
   google("google", "white");
@@ -6,7 +6,7 @@ enum loginPlatform {
   final String name;
   final String color;
 
-  const loginPlatform(
+  const LoginSite(
     this.name,
     this.color
   );
