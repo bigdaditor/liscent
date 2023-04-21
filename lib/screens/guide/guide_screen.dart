@@ -99,7 +99,7 @@ class _GuideState extends State<Guide> {
                   ),
                   Container(
                     child: ElevatedButton(
-                      onPressed: () async {final result = await Navigator.pushNamed(context, '/home');},
+                      onPressed: () async {final result = await Navigator.pushNamed(context, '/layout');},
                       child: Text(
                         '시작하기',
                         style: TextStyle(

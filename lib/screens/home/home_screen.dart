@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liscent/screens/common/header.dart';
 import '/model/PosterItem.dart';
 
 final posterItem = {
@@ -21,29 +22,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int idx = 0;
-  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     posterList = PosterList.fromJson(posterItem);
     int cnt = posterList!.list!.length;
+
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
-        child: AppBar(
-          title: Image.asset('assets/logo.png', width: 130),
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          elevation: 0,
-          actions: [
-            IconButton(
-              onPressed: null,
-              icon: Image.asset('assets/icon_search.png'),
-              padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-            )
-          ],
-        ),
-      ),
       body: LayoutBuilder(
         builder: (BuildContext, BoxConstraints) => Column(
           children: [
@@ -206,99 +191,6 @@ class _HomeState extends State<Home> {
             ))
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xFF41424A),
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
-        selectedLabelStyle:
-            TextStyle(fontSize: 12, fontWeight: FontWeight.w700, height: 1.8),
-        unselectedLabelStyle: TextStyle(fontSize: 12, height: 1.8),
-        currentIndex: _selectedIndex,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            label: 'Home',
-            icon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_home_off.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-            activeIcon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_home_on.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Docent',
-            icon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_docent_off.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-            activeIcon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_docent_on.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Nearby',
-            icon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_nearby_off.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-            activeIcon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_nearby_on.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Mypage',
-            icon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_mypage_off.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-            activeIcon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_mypage_on.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }

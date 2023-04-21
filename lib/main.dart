@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liscent/screens/common/main_layout.dart';
 import 'package:liscent/screens/guide/guide_screen.dart';
 import 'package:liscent/screens/info/info_screen.dart';
 import 'package:liscent/screens/nearby/nearby_screen.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
         primarySwatch: Colors.blue,
       ),
-      home: Rank(),
+      home: LoginScreen(),
       routes: {
         '/login': (context) => LoginScreen(),
         '/tos': (context) => const Tos(),
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
         '/guide': (context) => const Guide(),
         '/worklist': (context) => const Worklist(),
         '/likedisplay': (context) => const Likedisplay(),
-        '/nearby': (context) => const NearbyScreen()
+        '/nearby': (context) => const NearbyScreen(),
+        '/layout': (context) => MainLayout(),
       },
     );
   }
