@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
         primarySwatch: Colors.blue,
       ),
-      home: Play(),
+      home: Rank(),
       routes: {
         '/login': (context) => LoginScreen(),
         '/tos': (context) => const Tos(),
