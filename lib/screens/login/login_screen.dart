@@ -128,17 +128,7 @@ class LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      '로그인에 문제가 있으신가요?',
-                      style: TextStyle(
-                          color: Color.fromRGBO(44, 67, 155, 0.8),
-                          fontSize: 12),
-                    )),
+
               ],
             ),
           ),

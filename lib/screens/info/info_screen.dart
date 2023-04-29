@@ -121,6 +121,7 @@ class _InfoState extends State<Info> {
                       ],
                     ),
                     Container(
+                      width: MediaQuery.of(context).size.width,
                       margin: EdgeInsets.symmetric(vertical: 10),
                       padding: EdgeInsets.fromLTRB(0, 3, 0, 10),
                       decoration: BoxDecoration(
@@ -164,8 +165,7 @@ class _InfoState extends State<Info> {
                                     letterSpacing: 1,
                                     height: 2))
                           ])),
-                          Row(
-                            children: [
+
                               Text.rich(TextSpan(children: [
                                 TextSpan(
                                     text: '휴관일 : ',
@@ -186,7 +186,7 @@ class _InfoState extends State<Info> {
                               SizedBox(width: MediaQuery.of(context).size.width/4),
                               Text.rich(TextSpan(children: [
                                 TextSpan(
-                                    text: '관람료 : ',
+                                    text: '입장료 : ',
                                     style: TextStyle(
                                         color: Color(0xff2C439B),
                                         fontSize: 15,
@@ -201,8 +201,6 @@ class _InfoState extends State<Info> {
                                         letterSpacing: 1,
                                         height: 2))
                               ])),
-                            ],
-                          ),
                           Text.rich(TextSpan(children: [
                             TextSpan(
                                 text: '전화번호 : ',
@@ -213,6 +211,23 @@ class _InfoState extends State<Info> {
                                     height: 2)),
                             TextSpan(
                                 text: '1644-9876',
+                                style: TextStyle(
+                                    color: Color(0xff41424A),
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                    letterSpacing: 1,
+                                    height: 2))
+                          ])),
+                          Text.rich(TextSpan(children: [
+                            TextSpan(
+                                text: '기타안내 : ',
+                                style: TextStyle(
+                                    color: Color(0xff2C439B),
+                                    fontSize: 15,
+                                    letterSpacing: 1,
+                                    height: 2)),
+                            TextSpan(
+                                text: '입장마감 18시 30분',
                                 style: TextStyle(
                                     color: Color(0xff41424A),
                                     fontSize: 15,

@@ -48,10 +48,9 @@ class _SearchState extends State<Search> {
                           ),
                           onPressed: () => {},
                         ),
-                        prefixIcon: IconButton(
-                          icon: Image.asset('assets/icon_search.png'),
-                          onPressed: () => {},
-                        ),
+                        prefixIcon: Image.asset('assets/icon_search.png', width: 22,),
+                          
+                          
                         enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Color(0xff41424A))),
                         focusedBorder: UnderlineInputBorder(

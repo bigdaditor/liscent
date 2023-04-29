@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Likedisplay extends StatefulWidget {
-  const Likedisplay({Key? key}) : super(key: key);
+class Likework extends StatefulWidget {
+  const Likework({Key? key}) : super(key: key);
 
   @override
-  State<Likedisplay> createState() => _LikedisplayState();
+  State<Likework> createState() => _LikeworkState();
 }
 
-class _LikedisplayState extends State<Likedisplay> {
+class _LikeworkState extends State<Likework> {
   int _selectedIndex = 0;
   bool click = true;
 
@@ -40,7 +40,7 @@ class _LikedisplayState extends State<Likedisplay> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('좋아하는 전시',
+                    Text('좋아하는 작품',
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w700,
@@ -79,7 +79,7 @@ class _LikedisplayState extends State<Likedisplay> {
                         ),
                       ),
                       decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xff41424A), width: 1)
+                          border: Border.all(color: Color(0xff41424A), width: 1)
                       ),
                       padding: EdgeInsets.symmetric(vertical: 3),
                     )
@@ -87,12 +87,12 @@ class _LikedisplayState extends State<Likedisplay> {
                 )),
             Expanded(
                 child: ListView.builder(
-              padding: EdgeInsets.fromLTRB(25, 0, 25, 20),
-              itemCount: 20,
-              itemBuilder: (context, index) {
-                return listcard();
-              },
-            ))
+                  padding: EdgeInsets.fromLTRB(25, 0, 25, 20),
+                  itemCount: 20,
+                  itemBuilder: (context, index) {
+                    return listcard();
+                  },
+                ))
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -101,7 +101,7 @@ class _LikedisplayState extends State<Likedisplay> {
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.white,
           selectedLabelStyle:
-              TextStyle(fontSize: 12, fontWeight: FontWeight.w700, height: 1.8),
+          TextStyle(fontSize: 12, fontWeight: FontWeight.w700, height: 1.8),
           unselectedLabelStyle: TextStyle(fontSize: 12, height: 1.8),
           currentIndex: _selectedIndex,
           onTap: (index) {
@@ -230,7 +230,7 @@ class _LikedisplayState extends State<Likedisplay> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '전시명',
+                      '작품명',
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
@@ -238,12 +238,12 @@ class _LikedisplayState extends State<Likedisplay> {
                           color: Color(0xff41424A)),
                     ),
                     Text(
-                      '전시 장소',
+                      '작가명',
                       style: TextStyle(
                           fontSize: 12, color: Color.fromRGBO(65, 66, 74, 0.7)),
                     ),
                     Text(
-                      '전시 일정',
+                      '작가 연도',
                       style: TextStyle(
                           fontSize: 12, color: Color.fromRGBO(65, 66, 74, 0.7)),
                     )

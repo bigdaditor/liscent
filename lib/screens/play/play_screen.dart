@@ -104,7 +104,7 @@ class _PlayState extends State<Play> {
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.width/2,
+                      height: MediaQuery.of(context).size.width/1.8,
                       margin: EdgeInsets.only(top: 10),
                       padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                       decoration: BoxDecoration(
@@ -113,12 +113,13 @@ class _PlayState extends State<Play> {
                         child: SingleChildScrollView(
                           scrollDirection: Axis.vertical,
                           child: Text(
-                            '《Innocent Blossom》 에서는 이처럼 순수하고 신비로운 소녀들의 이미지에 모든 것이 새로 움트는 계절의 생동감을 더했다. 황도유가 늘 탐구하고 있는 가장 순수한 회화그리고 이를 구성하고 있는 최소한의,그리고 필수적인 요소들에 대해 고민할 수 있는 시간이다.',
+                            '《Innocent Blossom》 에서는 이처럼 순수하고 신비로운 소녀들의 이미지에 모든 것이 새로 움트는 계절의 생동감을 더했다. 황도유가 늘 탐구하고 있는 가장 순수한 회화그리고 이를 구성하고 있는 최소한의,그리고 필수적인 요소들에 대해 고민할 수 있는 시간이다.'
+                                '《Innocent Blossom》 에서는 이처럼 순수하고 신비로운 소녀들의 이미지에 모든 것이 새로 움트는 계절의 생동감을 더했다. 황도유가 늘 탐구하고 있는 가장 순수한 회화그리고 이를 구성하고 있는 최소한의,그리고 필수적인 요소들에 대해 고민할 수 있는 시간이다.',
                             style: TextStyle(
                                 color: Color(0xff41424A),
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
-                                height: 2),
+                                height: 1.8),
                             textAlign: TextAlign.center,
                           ),
                         ),

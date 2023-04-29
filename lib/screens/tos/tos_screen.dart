@@ -189,6 +189,10 @@ class _TosState extends State<Tos> {
                           fontSize: 15,
                           fontWeight: FontWeight.w700),
                     ),
+                    subtitle: Text('(Liscent의 다양한 정보를 안내드리기 위해 필요해요.)',
+                        style: TextStyle(
+                            color: const Color(0xff41424A),
+                            fontWeight: FontWeight.w500)),
                     value: _ischecked4,
                     onChanged: (value) {
                       setState(() {
