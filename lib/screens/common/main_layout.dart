@@ -26,7 +26,7 @@ class MainLayoutState extends State<MainLayout> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
-        child: SearchBar(),
+        child: SearchBar,
       ),
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(

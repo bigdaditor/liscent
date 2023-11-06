@@ -17,6 +17,9 @@ import 'screens/likedocent/likedocent_screen.dart';
 import 'screens/rank/rank_screen.dart';
 
 
+// ADB Profile
+// 1080 x 2400
+// 6.7인치
 void main() {
   runApp(const MyApp());
 }
