@@ -4,7 +4,7 @@ import 'package:liscent/screens/common/header.dart';
 import 'package:liscent/screens/home/home_screen.dart';
 import 'package:liscent/screens/nearby/nearby_screen.dart';
 
-class MainLayout extends StatefulWidget {
+class MainLayout extends StatefulWidget{
 
   @override
   State<MainLayout> createState() => MainLayoutState();
@@ -26,7 +26,7 @@ class MainLayoutState extends State<MainLayout> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
-        child: SearchBar,
+        child: SearchAppBar(),
       ),
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -119,5 +119,4 @@ class MainLayoutState extends State<MainLayout> {
       ),
     );
   }
-
 }
