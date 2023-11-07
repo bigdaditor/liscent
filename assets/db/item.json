@@ -1,0 +1,36 @@
+{
+"items": [
+  {
+    "title": "나탈리 카르푸셴코 사진전",
+    "subTitle":  "모든 아름다움의 발견",
+    "start": "2022-12-23",
+    "end": "2023-05-07",
+    "holiday": "매월 첫번째 월요일(공휴일 정상 운영)",
+    "image": "assets/poster01.jpg"
+  },
+  {
+    "title": "다비드 자맹",
+    "subTitle":  "프로방스에서 온 댄디보이",
+    "start": "2023-02-04",
+    "end": "2023-04-27",
+    "holiday": "매월 세번째 월요일",
+    "image": "assets/poster02.jpg"
+  },
+  {
+    "title": "어노니머스 프로젝트",
+    "subTitle":  "우리가 멈춰섰던 순간들",
+    "start": "2022-11-25",
+    "end": "2023-06-06",
+    "holiday": "매월 첫번째 월요일(공휴일 정상 운영)",
+    "image": "assets/poster03.jpg"
+  },
+  {
+    "title": "장 줄리앙",
+    "subTitle":  "그러면, 거기",
+    "start": "2022-10-01",
+    "end": "2023-01-24",
+    "holiday": "",
+    "image": "assets/poster04.jpg"
+  }
+]
+}

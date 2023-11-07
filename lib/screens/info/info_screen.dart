@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:liscent/screens/common/header.dart';
 
 class Info extends StatefulWidget {
-  const Info({Key? key}) : super(key: key);
+  int index;
 
-
+  Info(this.index, {super.key});
 
   @override
   State<Info> createState() => _InfoState();
@@ -13,25 +14,16 @@ class _InfoState extends State<Info> {
   int _selectedIndex = 0;
   bool click = true;
 
-
   @override
   Widget build(BuildContext context) {
+    if(widget.index != 0) {
+      _selectedIndex = widget.index;
+    }
+
     return Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(60),
-          child: AppBar(
-            title: Image.asset('assets/logo.png', width: 130),
-            centerTitle: true,
-            backgroundColor: Colors.white,
-            elevation: 0,
-            actions: [
-              IconButton(
-                onPressed: null,
-                icon: Image.asset('assets/icon_search.png'),
-                padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-              )
-            ],
-          ),
+          preferredSize: const Size.fromHeight(60),
+          child: SearchAppBar(),
         ),
         body: SingleChildScrollView(
           child: Column(

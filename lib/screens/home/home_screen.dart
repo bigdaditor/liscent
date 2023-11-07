@@ -1,17 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:liscent/screens/common/header.dart';
-import '/model/PosterItem.dart';
-
-final posterItem = {
-  "list": [
-    {"image": "assets/poster01.jpg", "name": "포스터01"},
-    {"image": "assets/poster02.jpg", "name": "포스터02"},
-    {"image": "assets/poster03.jpg", "name": "포스터03"},
-    {"image": "assets/poster04.jpg", "name": "포스터04"}
-  ]
-};
-
-PosterList? posterList;
+import 'package:flutter/services.dart';
+import 'package:liscent/model/Item.dart';
+import 'package:liscent/model/ItemList.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -22,11 +14,19 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int idx = 0;
+  List? _items;
+
+  Future<void> getJson() async {
+    final String response = await rootBundle.loadString('assets/db/item.json');
+    final data = await json.decode(response);
+    _items = data;
+  }
 
   @override
   Widget build(BuildContext context) {
-    posterList = PosterList.fromJson(posterItem);
-    int cnt = posterList!.list!.length;
+    getJson();
+
+    int cnt = _items!.length;
 
     return Scaffold(
       body: LayoutBuilder(
@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
                             height: 520,
                             child: PageView.builder(
                               controller: PageController(initialPage: 0),
-                              itemCount: posterList!.list!.length,
+                              itemCount: _items!.length,
                               onPageChanged: (value) {
                                 setState(() {
                                   idx = value;
@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
                                   Container(
                                     height: 520,
                                     child: Image.asset(
-                                      posterList!.list!.elementAt(index).image!,
+                                      _items![idx]['image'],
                                       width: MediaQuery.of(context).size.width,
                                       fit: BoxFit.fitHeight,
                                     ),
@@ -85,7 +85,7 @@ class _HomeState extends State<Home> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          '황도유 : Innocentblossom',
+                                          _items![idx]['title'],
                                           style: TextStyle(
                                             color: Color(0xffFFFFFF),
                                             fontWeight: FontWeight.w700,
@@ -106,7 +106,7 @@ class _HomeState extends State<Home> {
                                           height: 8,
                                         ),
                                         Text(
-                                          '2023. 03. 27 ~ 2023. 04. 26',
+                                          _items![idx]['start'] + " ~ " + _items![idx]['end'],
                                           style: TextStyle(
                                             color: Color(0xffFFFFFF),
                                             fontSize: 15,
