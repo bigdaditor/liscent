@@ -31,7 +31,8 @@ dev_dependencies:
 flutter:
   assets:
     - assets/
-    - assets/db/item.json
+    - assets/db/exhibition.json
+    - assets/db/doscent.json
   fonts:
     - family: Roboto
       fonts:

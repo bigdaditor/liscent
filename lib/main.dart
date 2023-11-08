@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: Play(),
       routes: {
         '/login': (context) => LoginScreen(),
         '/tos': (context) => const Tos(),
