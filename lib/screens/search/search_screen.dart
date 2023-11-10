@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:liscent/screens/home/home_screen.dart';
+import 'package:liscent/screens/nearby/nearby_screen.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -8,6 +10,14 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+  List<Widget> pages = [const Home(), const NearbyScreen()];
+  int _selectedIndex = 0;
+
+  void onTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,13 +28,6 @@ class _SearchState extends State<Search> {
           centerTitle: true,
           backgroundColor: Colors.white,
           elevation: 0,
-          actions: [
-            IconButton(
-              onPressed: null,
-              icon: Image.asset('assets/icon_search.png'),
-              padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-            )
-          ],
         ),
       ),
       body: Stack(
@@ -179,7 +182,7 @@ class _SearchState extends State<Search> {
                 backgroundColor: Color(0xff2C439B),
               ))
         ],
-      )
+      ),
     );
   }
 }

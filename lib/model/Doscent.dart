@@ -1,12 +1,22 @@
 class Doscent {
-  String title;
-  String place;
-  String image;
-  String exhibitionId;
+  final int exhibitionId;
+  final String title;
+  final String place;
+  final String image;
 
-  Doscent.fromJson(Map<String, dynamic> json) :
-    exhibitionId = json['exhibitionId'],
-    title = json['title'],
-    place = json['place'],
-    image = json['image'];
+  Doscent({
+    required this.exhibitionId,
+    required this.title,
+    required this.place,
+    required this.image,
+  });
+
+  factory Doscent.fromJson(Map<String, dynamic> json) {
+    return Doscent(
+        exhibitionId: json['exhibitionId'] as int,
+        title: json['title'] as String,
+        place: json['place'] as String,
+        image: json['image'] as String
+    );
+  }
 }

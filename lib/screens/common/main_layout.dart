@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:liscent/model/TabItem.dart';
+import 'package:liscent/screens/common/bottom_navigation.dart';
 import 'package:liscent/screens/common/header.dart';
+import 'package:liscent/screens/common/tab_navigator.dart';
 import 'package:liscent/screens/home/home_screen.dart';
 import 'package:liscent/screens/nearby/nearby_screen.dart';
+import 'package:liscent/screens/search/search_screen.dart';
 
 class MainLayout extends StatefulWidget{
 
@@ -12,110 +16,84 @@ class MainLayout extends StatefulWidget{
 
 
 class MainLayoutState extends State<MainLayout> {
-  List<Widget> pages = [const Home(), const NearbyScreen()];
-  int _selectedIndex = 0;
+  var _currentTab = TabItem.home;
 
-  void onTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  final _navigatorKeys = {
+    TabItem.home: GlobalKey<NavigatorState>(),
+    TabItem.doscent: GlobalKey<NavigatorState>(),
+    TabItem.nearby: GlobalKey<NavigatorState>(),
+    TabItem.mypage: GlobalKey<NavigatorState>(),
+  };
+
+  void onTapped(TabItem tabItem) {
+    if (tabItem == _currentTab) {
+      _navigatorKeys[tabItem]!.currentState!.popUntil((route) => route.isFirst);
+    } else {
+      setState(() {
+        _currentTab = tabItem;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
-        child: SearchAppBar(),
+    return WillPopScope(
+      onWillPop: () async {
+        final isFirstRouteInCurrentTab = !await _navigatorKeys[_currentTab]!.currentState!.maybePop();
+        if (isFirstRouteInCurrentTab) {
+          if (_currentTab != TabItem.home) {
+            onTapped(TabItem.home);
+            return false;
+          }
+        }
+        return isFirstRouteInCurrentTab;
+      },
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60),
+          child: AppBar(
+            title: Image.asset('assets/logo.png', width: 130),
+            centerTitle: true,
+            backgroundColor: Colors.white,
+            elevation: 0,
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Search(),
+                      )
+                  );
+                },
+                icon: Image.asset('assets/icon_search.png'),
+                padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+              )
+            ],
+          )
+        ),
+        body: Stack(
+          children: <Widget>[
+            _buildOffstageNavigator(TabItem.home),
+            _buildOffstageNavigator(TabItem.doscent),
+            _buildOffstageNavigator(TabItem.nearby),
+            _buildOffstageNavigator(TabItem.mypage)
+          ],
+        ),
+        bottomNavigationBar: BottomNavigation(
+          currentTab: _currentTab,
+          onSelectTab: onTapped
+        )
       ),
-      body: pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xFF41424A),
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
-        selectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, height: 1.8),
-        unselectedLabelStyle: TextStyle(fontSize: 12, height: 1.8),
-        currentIndex: _selectedIndex,
-        onTap: onTapped,
-        items: [
-          BottomNavigationBarItem(
-            label: 'Home',
-            icon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_home_off.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-            activeIcon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_home_on.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Docent',
-            icon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_docent_off.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-            activeIcon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_docent_on.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Nearby',
-            icon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_nearby_off.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-            activeIcon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_nearby_on.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Mypage',
-            icon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_mypage_off.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-            activeIcon: Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Image.asset(
-                'assets/icon_mypage_on.png',
-                width: 25,
-                height: 25,
-              ),
-            ),
-          ),
-        ],
+    );
+  }
+
+  Widget _buildOffstageNavigator(TabItem tabItem) {
+    return Offstage(
+      offstage: _currentTab != tabItem,
+      child: TabNavigator(
+        navigatorKey: _navigatorKeys[tabItem],
+        tabItem: tabItem
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:liscent/screens/search/search_screen.dart';
 
 class SearchAppBar extends StatelessWidget {
   const SearchAppBar({super.key});
@@ -13,7 +14,14 @@ class SearchAppBar extends StatelessWidget {
        elevation: 0,
        actions: [
          IconButton(
-           onPressed: null,
+           onPressed: () {
+             Navigator.push(
+               context,
+               MaterialPageRoute(
+                 builder: (context) => Search(),
+               )
+             );
+           },
            icon: Image.asset('assets/icon_search.png'),
            padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
          )

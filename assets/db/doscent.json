@@ -3,52 +3,45 @@
   [
     {
       "id": 1,
-      "exhibitionId": "1",
+      "exhibitionId": 1,
       "title": "Ocean Breath",
-      "place": "2번 구역",
-      "image": "assets/poster01.jpg"
+      "place": "2번 구역"
     },
     {
       "id": 2,
-      "exhibitionId": "1",
+      "exhibitionId": 1,
       "title": "Plastic Mermaid",
-      "place": "5번 구역",
-      "image": "assets/poster01.jpg"
+      "place": "5번 구역"
     },
     {
       "id": 3,
-      "exhibitionId": "2",
+      "exhibitionId": 2,
       "title": " Into the Atelier",
-      "place": "프로방스의 작업실",
-      "image": "assets/poster02.jpg"
+      "place": "프로방스의 작업실"
     },
     {
       "id": 4,
-      "exhibitionId": "2",
+      "exhibitionId": 2,
       "title": "A Liberalist, Dandy",
-      "place": "자유로운 멋쟁이",
-      "image": "assets/poster02.jpg"
+      "place": "자유로운 멋쟁이"
     },
     {
       "id": 5,
-      "exhibitionId": "2",
+      "exhibitionId": 2,
       "title": "Hommage to…",
-      "place": "여정을 마치며",
-      "image": "assets/poster02.jpg"
+      "place": "여정을 마치며"
     },
     {
       "id": 6,
-      "exhibitionId": "3",
+      "exhibitionId": 3,
       "title": "Before the Instagram Era",
-      "place": "Theme 2",
-      "image": "assets/poster03.jpg"
+      "place": "Theme 2"
     },
     {
       "id": 7,
-      "exhibitionId": "3",
+      "exhibitionId": 3,
       "title": "The Moments We Paused",
-      "place": "Theme 3",
-      "image": "assets/poster03.jpg"
+      "place": "Theme 3"
     }
   ]
 }
