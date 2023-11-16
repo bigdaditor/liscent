@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:liscent/screens/home/home_screen.dart';
-import 'package:liscent/screens/nearby/nearby_screen.dart';
+import 'package:liscent/src/screens/home/home_screen.dart';
+import 'package:liscent/src/screens/nearby/nearby_screen.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);

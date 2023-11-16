@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:liscent/screens/common/header.dart';
+import 'package:liscent/src/screens/common/header.dart';
 
 class Info extends StatefulWidget {
   int index;

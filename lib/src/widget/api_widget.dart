@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:liscent/model/Doscent.dart';
-import 'package:liscent/model/Exhibition.dart';
+import 'package:liscent/src/model/Doscent.dart';
+import 'package:liscent/src/model/Exhibition.dart';
 
 class ApiService {
   static Future<List<Exhibition>> getExhibition() async {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:liscent/widget/login_widget.dart';
+import 'package:liscent/src/widget/login_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreenState createState() => LoginScreenState();

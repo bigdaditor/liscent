@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:liscent/screens/search/search_screen.dart';
+import 'package:liscent/src/screens/search/search_screen.dart';
 
 class SearchAppBar extends StatelessWidget {
   const SearchAppBar({super.key});

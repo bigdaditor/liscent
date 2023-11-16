@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:liscent/model/Doscent.dart';
-import 'package:liscent/model/Exhibition.dart';
-import 'package:liscent/widget/api_widget.dart';
+import 'package:liscent/src/model/Doscent.dart';
+import 'package:liscent/src/model/Exhibition.dart';
+import 'package:liscent/src/widget/api_widget.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
