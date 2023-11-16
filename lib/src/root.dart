@@ -77,13 +77,19 @@ class Root extends GetView<RootController> {
                 ],
               ),
               bottomNavigationBar: BottomNavigationBar(
-                  currentIndex: controller.rootPageIndex.value,
-                  showSelectedLabels: true,
-                  showUnselectedLabels: true,
-                  onTap: controller.changeRootPageIndex,
+                backgroundColor: Color(0xFF41424A),
+                type: BottomNavigationBarType.fixed,
+                selectedItemColor: Colors.white,
+                unselectedItemColor: Colors.white,
+                selectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, height: 1.8),
+                unselectedLabelStyle: TextStyle(fontSize: 12, height: 1.8),
+                currentIndex: controller.rootPageIndex.value,
+                showSelectedLabels: true,
+                showUnselectedLabels: true,
+                onTap: controller.changeRootPageIndex,
                   items: [
                     BottomNavigationBarItem(
-                    label: 'Home',
+                      label: 'Home',
                       icon: Padding(
                         padding: EdgeInsets.only(top: 10),
                         child: Image.asset(
