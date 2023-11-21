@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:liscent/src/model/Doscent.dart';
 import 'package:liscent/src/model/Exhibition.dart';
 import 'package:liscent/src/widget/api_widget.dart';
+import 'package:liscent/src/screens/search/search_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -22,6 +23,29 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+          child: AppBar(
+            title: Image.asset('assets/logo.png', width: 130),
+            centerTitle: true,
+            backgroundColor: Colors.white,
+            elevation: 0,
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                        MaterialPageRoute(
+                          builder: (context) => Search(),
+                        )
+                      );
+                    },
+                    icon: Image.asset('assets/icon_search.png'),
+                    padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                  )
+                ],
+              )
+          ),
       body: LayoutBuilder(
         builder: (BuildContext, BoxConstraints) => Column(
           children: [
