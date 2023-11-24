@@ -1,0 +1,33 @@
+{
+  "items":
+  [
+    {
+      "id": 1,
+      "name": "나탈리 카르푸셴코(Natalie Karpushenko)",
+      "birth": "1991",
+      "death": "9999",
+      "nation": "카자흐스탄"
+    },
+    {
+      "id": 2,
+      "name": "다비드 자맹(David Jamin)",
+      "birth": "1970",
+      "death": "9999",
+      "nation": "프랑스"
+    },
+    {
+      "id": 3,
+      "name": "리 슐만(Lee Shulman)",
+      "birth": "1938",
+      "death": "9999",
+      "nation": "영국"
+    },
+    {
+      "id": 4,
+      "name": "장 줄리앙(Jean Jullien)",
+      "birth": "1983",
+      "death": "9999",
+      "nation": "프랑스"
+    }
+  ]
+}

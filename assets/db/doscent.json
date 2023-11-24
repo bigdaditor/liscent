@@ -5,43 +5,50 @@
       "id": 1,
       "exhibitionId": 1,
       "title": "Ocean Breath",
-      "place": "2번 구역"
+      "place": "2번 구역",
+      "publisher": "강남규"
     },
     {
       "id": 2,
       "exhibitionId": 1,
       "title": "Plastic Mermaid",
-      "place": "5번 구역"
+      "place": "5번 구역",
+      "publisher": "박보영"
     },
     {
       "id": 3,
       "exhibitionId": 2,
       "title": " Into the Atelier",
-      "place": "프로방스의 작업실"
+      "place": "프로방스의 작업실",
+      "publisher": "강남규"
     },
     {
       "id": 4,
       "exhibitionId": 2,
       "title": "A Liberalist, Dandy",
-      "place": "자유로운 멋쟁이"
+      "place": "자유로운 멋쟁이",
+      "publisher": "정한나"
     },
     {
       "id": 5,
       "exhibitionId": 2,
       "title": "Hommage to…",
-      "place": "여정을 마치며"
+      "place": "여정을 마치며",
+      "publisher": "이연주"
     },
     {
       "id": 6,
       "exhibitionId": 3,
       "title": "Before the Instagram Era",
-      "place": "Theme 2"
+      "place": "Theme 2",
+      "publisher": "정한나"
     },
     {
       "id": 7,
       "exhibitionId": 3,
       "title": "The Moments We Paused",
-      "place": "Theme 3"
+      "place": "Theme 3",
+      "publisher": "이연주"
     }
   ]
 }
