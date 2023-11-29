@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:liscent/src/model/Tag.dart';
+import 'package:liscent/src/widget/api_widget.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -8,7 +10,8 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  
+  Future<List<Tag>> tags = ApiService.getTag();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,110 +55,146 @@ class _SearchState extends State<Search> {
                   ),
                   Container(
                       padding: EdgeInsets.only(top: 16),
-                      child: Wrap(
-                        direction: Axis.horizontal,
-                        alignment: WrapAlignment.start,
-                        spacing: 6,
-                        runSpacing: 6,
-                        children: [
-                          OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                  padding: EdgeInsets.all(14),
-                                  backgroundColor: Colors.white,
-                                  primary: Color(0xff41424A),
-                                  textStyle: TextStyle(fontSize: 16),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(0)),
-                                  side: BorderSide(
-                                      width: 1, color: Color(0xff41424A))),
-                              onPressed: () {},
-                              child: Text('장줄리앙')),
-                          OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                  padding: EdgeInsets.all(14),
-                                  backgroundColor: Colors.white,
-                                  primary: Color(0xff41424A),
-                                  textStyle: TextStyle(fontSize: 16),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(0)),
-                                  side: BorderSide(
-                                      width: 1, color: Color(0xff41424A))),
-                              onPressed: () {},
-                              child: Text('어노미스트')),
-                          OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                  padding: EdgeInsets.all(14),
-                                  backgroundColor: Colors.white,
-                                  primary: Color(0xff41424A),
-                                  textStyle: TextStyle(fontSize: 16),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(0)),
-                                  side: BorderSide(
-                                      width: 1, color: Color(0xff41424A))),
-                              onPressed: () {},
-                              child: Text('나탈리카르푸센코')),
-                          OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                  padding: EdgeInsets.all(14),
-                                  backgroundColor: Colors.white,
-                                  primary: Color(0xff41424A),
-                                  textStyle: TextStyle(fontSize: 16),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(0)),
-                                  side: BorderSide(
-                                      width: 1, color: Color(0xff41424A))),
-                              onPressed: () {},
-                              child: Text('장줄리앙')),
-                          OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                  padding: EdgeInsets.all(14),
-                                  backgroundColor: Colors.white,
-                                  primary: Color(0xff41424A),
-                                  textStyle: TextStyle(fontSize: 16),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(0)),
-                                  side: BorderSide(
-                                      width: 1, color: Color(0xff41424A))),
-                              onPressed: () {},
-                              child: Text('알폰스무하전')),
-                        ],
-                      )),
+                      child:
+                        FutureBuilder(
+                          future: tags,
+                          builder: (context, snapshot) {
+                            switch (snapshot.connectionState) {
+                              case ConnectionState.waiting:
+                                return Center(child: CircularProgressIndicator());
+                              default:
+                                if (snapshot.hasData && snapshot.data!.length > 0) {
+                                  return Wrap(
+                                    direction: Axis.horizontal,
+                                    alignment: WrapAlignment.start,
+                                    spacing: 6,
+                                    runSpacing: 6,
+                                    children: [
+                                      OutlinedButton(
+                                        style: OutlinedButton.styleFrom(
+                                        padding: EdgeInsets.all(14),
+                                        backgroundColor: Colors.white,
+                                        primary: Color(0xff41424A),
+                                        textStyle: TextStyle(fontSize: 16),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(0)),
+                                          side: BorderSide(
+                                            width: 1, color: Color(0xff41424A))),
+                                            onPressed: () {},
+                                            child: Text()
+                                      ),
+                                    ]
+                                  );
+                                }
+                            }
+                          }
+                      )
+                    //Wrap(
+                      //   direction: Axis.horizontal,
+                      //   alignment: WrapAlignment.start,
+                      //   spacing: 6,
+                      //   runSpacing: 6,
+                      //   children: [
+                      //
+                      //     // OutlinedButton(
+                      //     //     style: OutlinedButton.styleFrom(
+                      //     //         padding: EdgeInsets.all(14),
+                      //     //         backgroundColor: Colors.white,
+                      //     //         primary: Color(0xff41424A),
+                      //     //         textStyle: TextStyle(fontSize: 16),
+                      //     //         shape: RoundedRectangleBorder(
+                      //     //             borderRadius: BorderRadius.circular(0)),
+                      //     //         side: BorderSide(
+                      //     //             width: 1, color: Color(0xff41424A))),
+                      //     //     onPressed: () {},
+                      //     //     child: Text('장줄리앙')),
+                      //     // OutlinedButton(
+                      //     //     style: OutlinedButton.styleFrom(
+                      //     //         padding: EdgeInsets.all(14),
+                      //     //         backgroundColor: Colors.white,
+                      //     //         primary: Color(0xff41424A),
+                      //     //         textStyle: TextStyle(fontSize: 16),
+                      //     //         shape: RoundedRectangleBorder(
+                      //     //             borderRadius: BorderRadius.circular(0)),
+                      //     //         side: BorderSide(
+                      //     //             width: 1, color: Color(0xff41424A))),
+                      //     //     onPressed: () {},
+                      //     //     child: Text('어노미스트')),
+                      //     // OutlinedButton(
+                      //     //     style: OutlinedButton.styleFrom(
+                      //     //         padding: EdgeInsets.all(14),
+                      //     //         backgroundColor: Colors.white,
+                      //     //         primary: Color(0xff41424A),
+                      //     //         textStyle: TextStyle(fontSize: 16),
+                      //     //         shape: RoundedRectangleBorder(
+                      //     //             borderRadius: BorderRadius.circular(0)),
+                      //     //         side: BorderSide(
+                      //     //             width: 1, color: Color(0xff41424A))),
+                      //     //     onPressed: () {},
+                      //     //     child: Text('나탈리카르푸센코')),
+                      //     // OutlinedButton(
+                      //     //     style: OutlinedButton.styleFrom(
+                      //     //         padding: EdgeInsets.all(14),
+                      //     //         backgroundColor: Colors.white,
+                      //     //         primary: Color(0xff41424A),
+                      //     //         textStyle: TextStyle(fontSize: 16),
+                      //     //         shape: RoundedRectangleBorder(
+                      //     //             borderRadius: BorderRadius.circular(0)),
+                      //     //         side: BorderSide(
+                      //     //             width: 1, color: Color(0xff41424A))),
+                      //     //     onPressed: () {},
+                      //     //     child: Text('장줄리앙')),
+                      //     // OutlinedButton(
+                      //     //     style: OutlinedButton.styleFrom(
+                      //     //         padding: EdgeInsets.all(14),
+                      //     //         backgroundColor: Colors.white,
+                      //     //         primary: Color(0xff41424A),
+                      //     //         textStyle: TextStyle(fontSize: 16),
+                      //     //         shape: RoundedRectangleBorder(
+                      //     //             borderRadius: BorderRadius.circular(0)),
+                      //     //         side: BorderSide(
+                      //     //             width: 1, color: Color(0xff41424A))),
+                      //     //     onPressed: () {},
+                      //     //     child: Text('알폰스무하전')),
+                      //   ],
+                      // )
+                  ),
                   SizedBox(height: 130),
                   Container(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          '아쉽지만 검색하신 결과를',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xff41424A)
-                          ),
-                        ),
-                        Text(
-                          '찾을 수 없어요.',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xff41424A)
-                          ),
-                        ),
-                        SizedBox(height: 30),
-                        Text.rich(TextSpan(children: [
-                          TextSpan(text: '다른 검색어',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color(0xff2C439B))
-
-                          ),
-                          TextSpan(text: '를 입력해주세요.',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color(0xff41424A))
-                          )]))
+                        // Text(
+                        //   '아쉽지만 검색하신 결과를',
+                        //   style: TextStyle(
+                        //       fontSize: 20,
+                        //       fontWeight: FontWeight.w700,
+                        //       color: Color(0xff41424A)
+                        //   ),
+                        // ),
+                        // Text(
+                        //   '찾을 수 없어요.',
+                        //   style: TextStyle(
+                        //       fontSize: 20,
+                        //       fontWeight: FontWeight.w700,
+                        //       color: Color(0xff41424A)
+                        //   ),
+                        // ),
+                        // SizedBox(height: 30),
+                        // Text.rich(TextSpan(children: [
+                        //   TextSpan(text: '다른 검색어',
+                        //       style: TextStyle(
+                        //           fontSize: 20,
+                        //           fontWeight: FontWeight.w700,
+                        //           color: Color(0xff2C439B))
+                        //
+                        //   ),
+                        //   TextSpan(text: '를 입력해주세요.',
+                        //       style: TextStyle(
+                        //           fontSize: 20,
+                        //           fontWeight: FontWeight.w700,
+                        //           color: Color(0xff41424A))
+                        //   )]))
                       ],
                     ),
                   )

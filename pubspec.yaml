@@ -35,6 +35,7 @@ flutter:
     - assets/db/exhibition.json
     - assets/db/doscent.json
     - assets/db/author.json
+    - assets/db/tag.json
   fonts:
     - family: Roboto
       fonts:
