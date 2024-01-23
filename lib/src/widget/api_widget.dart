@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:liscent/src/model/Doscent.dart';
 import 'package:liscent/src/model/Exhibition.dart';
+import 'package:liscent/src/model/Tag.dart';
 
 class ApiService {
   static Future<List<Exhibition>> getExhibition() async {
@@ -42,5 +43,19 @@ class ApiService {
       doscents.add(instance);
     }
     return doscents;
+  }
+
+  static Future<List<Tag>> getTag() async {
+    List<Tag> tags = [];
+
+    final String tagtStr = await rootBundle.loadString('assets/db/tag.json');
+    final tagItems = await jsonDecode(tagtStr)['items'];
+
+    for (var item in tagItems) {
+      final instance = Tag.fromJson(item);
+      tags.add(instance);
+    }
+
+    return tags;
   }
 }
